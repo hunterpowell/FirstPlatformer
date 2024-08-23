@@ -441,11 +441,22 @@ theme_override_fonts/font = ExtResource("7_evo7x")
 theme_override_font_sizes/font_size = 8
 text = "Space to jump."
 
+[node name="Label10" type="Label" parent="Labels"]
+offset_left = -194.0
+offset_top = -493.0
+offset_right = -136.0
+offset_bottom = -474.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_evo7x")
+theme_override_font_sizes/font_size = 8
+text = "Sneaky sneaky..."
+autowrap_mode = 2
+
 [node name="Label2" type="Label" parent="Labels"]
-offset_left = 383.0
-offset_top = 72.0
-offset_right = 479.0
-offset_bottom = 89.0
+offset_left = 384.0
+offset_top = 73.0
+offset_right = 480.0
+offset_bottom = 90.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("7_evo7x")
 theme_override_font_sizes/font_size = 8
@@ -460,6 +471,18 @@ theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("7_evo7x")
 theme_override_font_sizes/font_size = 8
 text = "Just getting started!"
+horizontal_alignment = 1
+autowrap_mode = 2
+
+[node name="Label9" type="Label" parent="Labels"]
+offset_left = 527.0
+offset_top = -28.0
+offset_right = 623.0
+offset_bottom = -9.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("7_evo7x")
+theme_override_font_sizes/font_size = 8
+text = "Watch for enemies!"
 horizontal_alignment = 1
 autowrap_mode = 2
 
