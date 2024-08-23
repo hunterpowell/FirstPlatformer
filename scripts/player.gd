@@ -29,7 +29,7 @@ func _physics_process(delta: float) -> void:
 		if direction == 0 && Engine.time_scale == 1:
 			animated_sprite.play("idle")
 		# plays death animation if on floor and game is half speed (bad solution)
-		elif direction == 0 && Engine.time_scale == 0.5:
+		elif Engine.time_scale == 0.5:
 			animated_sprite.play("dead")
 		else:
 			animated_sprite.play("run")
