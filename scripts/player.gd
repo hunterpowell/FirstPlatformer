@@ -25,14 +25,16 @@ func _physics_process(delta: float) -> void:
 		animated_sprite.flip_h = true
 				
 	# Play animations
-	if is_on_floor():
-		if direction == 0 && Engine.time_scale == 1:
+	# plays death animation if engine speed is halved, only happens when killzone is hit
+	if Engine.time_scale == 0.5:
+		animated_sprite.play("dead")
+	
+	elif is_on_floor():
+		if direction == 0:
 			animated_sprite.play("idle")
-		# plays death animation if on floor and game is half speed (bad solution)
-		elif Engine.time_scale == 0.5:
-			animated_sprite.play("dead")
 		else:
 			animated_sprite.play("run")
+	
 	else:
 		animated_sprite.play("jump")
 	
