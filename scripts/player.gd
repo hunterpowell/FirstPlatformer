@@ -3,6 +3,8 @@ extends CharacterBody2D
 
 const SPEED = 130.0
 const JUMP_VELOCITY = -300.0
+var has_berry = false
+var can_double_jump = true
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
@@ -12,8 +14,18 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 
 	# Handle jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		velocity.y = JUMP_VELOCITY
+	if has_berry == true:
+		if Input.is_action_just_pressed("jump") and is_on_floor():
+			velocity.y = JUMP_VELOCITY
+		if Input.is_action_just_pressed("jump") and not is_on_floor() and can_double_jump == true:
+			velocity.y = JUMP_VELOCITY
+			can_double_jump = false
+		if is_on_floor():
+			can_double_jump = true
+		
+	else:
+		if Input.is_action_just_pressed("jump") and is_on_floor():
+			velocity.y = JUMP_VELOCITY
 
 	# Get the input direction -1, 0, 1
 	var direction := Input.get_axis("move_left", "move_right")

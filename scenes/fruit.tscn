@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://dau4px1u7r8m2"]
+
+[ext_resource type="Texture2D" uid="uid://dp4hproxbku5w" path="res://assets/sprites/fruit.png" id="1_s0ca4"]
+[ext_resource type="Script" path="res://scripts/fruit.gd" id="2_qp1g8"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xgffs"]
+atlas = ExtResource("1_s0ca4")
+region = Rect2(0, 48, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5cscs"]
+atlas = ExtResource("1_s0ca4")
+region = Rect2(48, 48, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_dafvp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xgffs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5cscs")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_uqnsn"]
+radius = 5.0
+
+[node name="Fruit" type="Area2D"]
+collision_mask = 2
+script = ExtResource("2_qp1g8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_dafvp")
+autoplay = "default"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1)
+shape = SubResource("CircleShape2D_uqnsn")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
