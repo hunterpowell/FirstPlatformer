@@ -7,6 +7,6 @@ var score = 0
 func add_point():
 	score += 1
 	score_label.text = "You collected " + str(score) + " coins!"
-	if score == 0:
-		score_label.text = "You collected 0 coins??? you are a massive fucking loser"
+	if score == 1:
+		score_label.text = "You collected 1 coin??? that's it?!?!? you are a massive fucking nerd"
 	

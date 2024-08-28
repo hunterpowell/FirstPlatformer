@@ -10,20 +10,33 @@ var can_double_jump: bool = true
 var roll: bool = false
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var hit_sound: AudioStreamPlayer2D = $HitSound
+@onready var jump_sound: AudioStreamPlayer2D = $JumpSound
+
 
 func _physics_process(delta: float) -> void:
-	# Add the gravity.
+	
+	# Get the input direction -1, 0, 1
+	var direction := Input.get_axis("move_left", "move_right")	# Add the gravity.
+	
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
-	# Handle jump.
+	handle_jump()
+	flip_sprite(direction)
+	play_animations(direction)
+	apply_movement(direction)
+	
+func handle_jump():
 	if alive == true:
 		if berries == 1:
 			if Input.is_action_just_pressed("jump") and is_on_floor():
 				velocity.y = JUMP_VELOCITY
+				jump_sound.play()
 			if Input.is_action_just_pressed("jump") and not is_on_floor() and can_double_jump == true:
 				roll = true
 				velocity.y = JUMP_VELOCITY
+				jump_sound.play()
 				can_double_jump = false
 			if is_on_floor():
 				can_double_jump = true
@@ -32,9 +45,11 @@ func _physics_process(delta: float) -> void:
 		elif berries >= 2:
 			if Input.is_action_just_pressed("jump") and is_on_floor():
 				velocity.y = JUMP_VELOCITY
+				jump_sound.play()
 			if Input.is_action_just_pressed("jump") and not is_on_floor() and can_double_jump == true:
 				roll = true
 				velocity.y = DOUBLE_JUMP_VELOCITY
+				jump_sound.play()
 				can_double_jump = false
 			if is_on_floor():
 				can_double_jump = true
@@ -42,23 +57,21 @@ func _physics_process(delta: float) -> void:
 		else:
 			if Input.is_action_just_pressed("jump") and is_on_floor():
 				velocity.y = JUMP_VELOCITY
+				jump_sound.play()
 
-	# Get the input direction -1, 0, 1
-	var direction := Input.get_axis("move_left", "move_right")
-	
-	# Flip the sprite
+func flip_sprite(dir):
 	if alive == true:
-		if direction > 0:
+		if dir > 0:
 			animated_sprite.flip_h = false
-		elif direction < 0:
+		elif dir < 0:
 			animated_sprite.flip_h = true
-				
-	# Play animations
+
+func play_animations(dir):
 	if alive == false:
 		animated_sprite.play("dead")
 	
 	elif is_on_floor():
-		if direction == 0:
+		if dir == 0:
 			animated_sprite.play("idle")
 		else:
 			animated_sprite.play("run")
@@ -68,12 +81,11 @@ func _physics_process(delta: float) -> void:
 			animated_sprite.play("jump")
 		else:
 			animated_sprite.play("roll")
-	
-	# Apply movement if alive
-	if direction and alive == true:
-		velocity.x = direction * SPEED
+			
+func apply_movement(dir):
+	if dir and alive == true:
+		velocity.x = dir * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
-	
