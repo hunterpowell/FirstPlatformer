@@ -15,10 +15,10 @@ var roll: bool = false
 
 
 func _physics_process(delta: float) -> void:
-	
 	# Get the input direction -1, 0, 1
 	var direction := Input.get_axis("move_left", "move_right")	# Add the gravity.
 	
+	# apply gravity
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
