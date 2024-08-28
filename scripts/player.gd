@@ -1,12 +1,13 @@
 extends CharacterBody2D
 
 
-const SPEED = 130.0
-const JUMP_VELOCITY = -300.0
-var alive = true
-var has_berry = false
-var can_double_jump = true
-var roll = false
+const SPEED: float = 130.0
+const JUMP_VELOCITY: float = -300.0
+const DOUBLE_JUMP_VELOCITY: float = -400.0
+var alive: bool = true
+var berries: int = 0
+var can_double_jump: bool = true
+var roll: bool = false
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 
@@ -17,7 +18,7 @@ func _physics_process(delta: float) -> void:
 
 	# Handle jump.
 	if alive == true:
-		if has_berry == true:
+		if berries == 1:
 			if Input.is_action_just_pressed("jump") and is_on_floor():
 				velocity.y = JUMP_VELOCITY
 			if Input.is_action_just_pressed("jump") and not is_on_floor() and can_double_jump == true:
@@ -28,6 +29,16 @@ func _physics_process(delta: float) -> void:
 				can_double_jump = true
 				roll = false
 			
+		elif berries >= 2:
+			if Input.is_action_just_pressed("jump") and is_on_floor():
+				velocity.y = JUMP_VELOCITY
+			if Input.is_action_just_pressed("jump") and not is_on_floor() and can_double_jump == true:
+				roll = true
+				velocity.y = DOUBLE_JUMP_VELOCITY
+				can_double_jump = false
+			if is_on_floor():
+				can_double_jump = true
+				roll = false
 		else:
 			if Input.is_action_just_pressed("jump") and is_on_floor():
 				velocity.y = JUMP_VELOCITY
