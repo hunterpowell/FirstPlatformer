@@ -1,0 +1,20 @@
+[gd_scene load_steps=2 format=3 uid="uid://h1cgwfjgswgv"]
+
+[sub_resource type="GDScript" id="GDScript_cj3cb"]
+script/source = "extends CanvasLayer
+
+@onready var game_manager: Node = %GameManager
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass
+	#coin_count.text = \"Coins: \" + str(game_manager.score)
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
+[node name="HUD" type="CanvasLayer"]
+script = SubResource("GDScript_cj3cb")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=4 uid="uid://cqtubvds3arkk"]
+[gd_scene load_steps=39 format=4 uid="uid://cqtubvds3arkk"]
 
 [ext_resource type="PackedScene" uid="uid://s2kgdlfxm0u5" path="res://scenes/player.tscn" id="1_3x3ks"]
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_c25a5"]
@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cgb2d3h7ib3k2" path="res://scenes/platform.tscn" id="3_vvlgn"]
 [ext_resource type="Texture2D" uid="uid://cdieroe5rme5j" path="res://assets/sprites/castle_tileset.png" id="4_0vavn"]
 [ext_resource type="PackedScene" uid="uid://dm3hijqcekpbo" path="res://scenes/coin.tscn" id="4_shoo4"]
-[ext_resource type="PackedScene" uid="uid://clln5wdlrocpu" path="res://scenes/exit_buttom.tscn" id="5_dghxd"]
+[ext_resource type="PackedScene" path="res://scenes/exit_buttom.tscn" id="5_dghxd"]
 [ext_resource type="PackedScene" uid="uid://bkwnbn11e4gpy" path="res://scenes/killzone.tscn" id="5_nh8i7"]
 [ext_resource type="PackedScene" uid="uid://c67u1leljvhhh" path="res://scenes/slime.tscn" id="6_7d5r0"]
 [ext_resource type="Script" path="res://scripts/exit_button.gd" id="6_kranc"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://b3narm8f81xgh" path="res://scenes/desert_platform.tscn" id="8_2hqv4"]
 [ext_resource type="PackedScene" uid="uid://dau4px1u7r8m2" path="res://scenes/fruit.tscn" id="8_sn1l4"]
 [ext_resource type="PackedScene" uid="uid://cej8xldgvflot" path="res://scenes/slime_purple.tscn" id="10_pyt1o"]
+[ext_resource type="PackedScene" uid="uid://h1cgwfjgswgv" path="res://scenes/hud.tscn" id="17_kmhoa"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_savwr"]
 texture = ExtResource("2_b1w4b")
@@ -719,6 +720,18 @@ position = Vector2(28, 158)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GameManager/RestartButton"]
 position = Vector2(268, -2422)
 shape = SubResource("CircleShape2D_lsngf")
+
+[node name="HUD" parent="GameManager" instance=ExtResource("17_kmhoa")]
+
+[node name="hud_label" type="Label" parent="GameManager/HUD"]
+offset_left = 30.0
+offset_top = 30.0
+offset_right = 422.0
+offset_bottom = 94.0
+theme_override_constants/outline_size = 16
+theme_override_fonts/font = ExtResource("7_evo7x")
+theme_override_font_sizes/font_size = 64
+text = "Coins: 0"
 
 [node name="Player" parent="." instance=ExtResource("1_3x3ks")]
 position = Vector2(50, 5)
