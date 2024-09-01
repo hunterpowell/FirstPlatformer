@@ -704,7 +704,7 @@ horizontal_alignment = 1
 autowrap_mode = 2
 
 [node name="ExitButton" parent="GameManager" instance=ExtResource("5_dghxd")]
-position = Vector2(232, -2264)
+position = Vector2(232, -2263)
 collision_mask = 2
 script = ExtResource("6_kranc")
 
@@ -923,7 +923,7 @@ position = Vector2(519, -2258)
 position = Vector2(472, -956)
 
 [node name="Fruit2" parent="Coins" instance=ExtResource("8_sn1l4")]
-position = Vector2(-344, 7)
+position = Vector2(-344, 6)
 
 [node name="Platforms" type="Node" parent="."]
 
