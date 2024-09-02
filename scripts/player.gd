@@ -14,6 +14,7 @@ var roll: bool = false
 var dashing: bool = false
 var can_dash: bool = true
 
+
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var hit_sound: AudioStreamPlayer2D = $HitSound
 @onready var jump_sound: AudioStreamPlayer2D = $JumpSound
@@ -21,26 +22,19 @@ var can_dash: bool = true
 
 func _physics_process(delta: float) -> void:
 	# Get the input direction -1, 0, 1
-	var direction := Input.get_axis("move_left", "move_right")	# Add the gravity.
-	
-	if Input.is_action_just_pressed("dash") and can_dash:
-		dashing = true
-		can_dash = false
-		$dash_timer.start()
-		$dash_again_timer.start()
-		
-	
+	var direction := Input.get_axis("move_left", "move_right")
+
 	# apply gravity
 	if not is_on_floor() and not dashing:
 		velocity += get_gravity() * delta
 	if not is_on_floor() and dashing:
 		velocity.y = 0
-		
-		
+
 	handle_jump()
 	flip_sprite(direction)
 	play_animations(direction)
 	apply_movement(direction)
+	dash()
 	
 func handle_jump():
 	if alive == true:
@@ -108,10 +102,15 @@ func apply_movement(dir):
 
 	move_and_slide()
 
+func dash():
+	if Input.is_action_just_pressed("dash") and can_dash:
+		dashing = true
+		can_dash = false
+		$dash_timer.start()
+		$dash_again_timer.start()
 
 func _on_dash_timer_timeout() -> void:
 	dashing = false
-
 
 func _on_dash_again_timer_timeout() -> void:
 	can_dash = true

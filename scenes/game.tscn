@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=4 uid="uid://cqtubvds3arkk"]
+[gd_scene load_steps=38 format=4 uid="uid://cqtubvds3arkk"]
 
 [ext_resource type="PackedScene" uid="uid://s2kgdlfxm0u5" path="res://scenes/player.tscn" id="1_3x3ks"]
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_c25a5"]
@@ -16,7 +16,6 @@
 [ext_resource type="PackedScene" uid="uid://b3narm8f81xgh" path="res://scenes/desert_platform.tscn" id="8_2hqv4"]
 [ext_resource type="PackedScene" uid="uid://dau4px1u7r8m2" path="res://scenes/fruit.tscn" id="8_sn1l4"]
 [ext_resource type="PackedScene" uid="uid://cej8xldgvflot" path="res://scenes/slime_purple.tscn" id="10_pyt1o"]
-[ext_resource type="PackedScene" uid="uid://h1cgwfjgswgv" path="res://scenes/hud.tscn" id="17_kmhoa"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_savwr"]
 texture = ExtResource("2_b1w4b")
@@ -721,7 +720,7 @@ position = Vector2(28, 158)
 position = Vector2(268, -2422)
 shape = SubResource("CircleShape2D_lsngf")
 
-[node name="HUD" parent="GameManager" instance=ExtResource("17_kmhoa")]
+[node name="HUD" type="CanvasLayer" parent="GameManager"]
 
 [node name="hud_label" type="Label" parent="GameManager/HUD"]
 offset_left = 30.0
