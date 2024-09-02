@@ -723,10 +723,10 @@ shape = SubResource("CircleShape2D_lsngf")
 [node name="HUD" type="CanvasLayer" parent="GameManager"]
 
 [node name="hud_label" type="Label" parent="GameManager/HUD"]
-offset_left = 30.0
-offset_top = 30.0
-offset_right = 422.0
-offset_bottom = 94.0
+offset_left = -498.0
+offset_top = 126.0
+offset_right = -106.0
+offset_bottom = 190.0
 theme_override_constants/outline_size = 16
 theme_override_fonts/font = ExtResource("7_evo7x")
 theme_override_font_sizes/font_size = 64
