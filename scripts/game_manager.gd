@@ -9,3 +9,6 @@ func add_point():
 	score += 1
 	score_label.text = "You collected " + str(score) + " coins!"
 	hud_label.text = "Coins: " + str(score)
+	if score == 60:
+		score_label.text = "Wow... you got them all. Nice job nerd!"
+		

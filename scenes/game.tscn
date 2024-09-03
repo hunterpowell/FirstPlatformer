@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=4 uid="uid://cqtubvds3arkk"]
+[gd_scene load_steps=39 format=4 uid="uid://cqtubvds3arkk"]
 
 [ext_resource type="PackedScene" uid="uid://s2kgdlfxm0u5" path="res://scenes/player.tscn" id="1_3x3ks"]
 [ext_resource type="Script" path="res://scripts/game_manager.gd" id="1_c25a5"]
@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cgb2d3h7ib3k2" path="res://scenes/platform.tscn" id="3_vvlgn"]
 [ext_resource type="Texture2D" uid="uid://cdieroe5rme5j" path="res://assets/sprites/castle_tileset.png" id="4_0vavn"]
 [ext_resource type="PackedScene" uid="uid://dm3hijqcekpbo" path="res://scenes/coin.tscn" id="4_shoo4"]
-[ext_resource type="PackedScene" uid="uid://clln5wdlrocpu" path="res://scenes/exit_buttom.tscn" id="5_dghxd"]
+[ext_resource type="PackedScene" path="res://scenes/exit_buttom.tscn" id="5_dghxd"]
 [ext_resource type="PackedScene" uid="uid://bkwnbn11e4gpy" path="res://scenes/killzone.tscn" id="5_nh8i7"]
 [ext_resource type="PackedScene" uid="uid://c67u1leljvhhh" path="res://scenes/slime.tscn" id="6_7d5r0"]
 [ext_resource type="Script" path="res://scripts/exit_button.gd" id="6_kranc"]
@@ -16,6 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://b3narm8f81xgh" path="res://scenes/desert_platform.tscn" id="8_2hqv4"]
 [ext_resource type="PackedScene" uid="uid://dau4px1u7r8m2" path="res://scenes/fruit.tscn" id="8_sn1l4"]
 [ext_resource type="PackedScene" uid="uid://cej8xldgvflot" path="res://scenes/slime_purple.tscn" id="10_pyt1o"]
+[ext_resource type="PackedScene" uid="uid://cheosggyytfxj" path="res://scenes/pink_fruit.tscn" id="13_rrg0v"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_savwr"]
 texture = ExtResource("2_b1w4b")
@@ -693,9 +694,9 @@ tile_set = SubResource("TileSet_bm0uv")
 
 [node name="ScoreLabel" type="Label" parent="GameManager"]
 offset_left = 471.0
-offset_top = -2304.0
+offset_top = -2320.0
 offset_right = 573.0
-offset_bottom = -2285.0
+offset_bottom = -2301.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_t23gd")
 theme_override_font_sizes/font_size = 8
@@ -723,10 +724,10 @@ shape = SubResource("CircleShape2D_lsngf")
 [node name="HUD" type="CanvasLayer" parent="GameManager"]
 
 [node name="hud_label" type="Label" parent="GameManager/HUD"]
-offset_left = -498.0
-offset_top = 126.0
-offset_right = -106.0
-offset_bottom = 190.0
+offset_left = 30.0
+offset_top = 30.0
+offset_right = 422.0
+offset_bottom = 94.0
 theme_override_constants/outline_size = 16
 theme_override_fonts/font = ExtResource("7_evo7x")
 theme_override_font_sizes/font_size = 64
@@ -749,193 +750,196 @@ position = Vector2(62, 132)
 [node name="WorldBoundary" type="CollisionShape2D" parent="Killzone"]
 shape = SubResource("WorldBoundaryShape2D_jfw4i")
 
-[node name="Coins" type="Node" parent="."]
+[node name="Pickups" type="Node" parent="."]
 
-[node name="Coin" parent="Coins" instance=ExtResource("4_shoo4")]
+[node name="Coin" parent="Pickups" instance=ExtResource("4_shoo4")]
 position = Vector2(56, 54)
 
-[node name="Coin2" parent="Coins" instance=ExtResource("4_shoo4")]
+[node name="Coin2" parent="Pickups" instance=ExtResource("4_shoo4")]
 position = Vector2(200, 54)
 
-[node name="Coin3" parent="Coins" instance=ExtResource("4_shoo4")]
+[node name="Coin3" parent="Pickups" instance=ExtResource("4_shoo4")]
 position = Vector2(504, 22)
 
-[node name="Coin4" parent="Coins" instance=ExtResource("4_shoo4")]
+[node name="Coin4" parent="Pickups" instance=ExtResource("4_shoo4")]
 position = Vector2(200, -43)
 
-[node name="Coin5" parent="Coins" instance=ExtResource("4_shoo4")]
+[node name="Coin5" parent="Pickups" instance=ExtResource("4_shoo4")]
 position = Vector2(88, -58)
 
-[node name="Coin6" parent="Coins" instance=ExtResource("4_shoo4")]
+[node name="Coin6" parent="Pickups" instance=ExtResource("4_shoo4")]
 position = Vector2(216, 54)
 
-[node name="Coin7" parent="Coins" instance=ExtResource("4_shoo4")]
+[node name="Coin7" parent="Pickups" instance=ExtResource("4_shoo4")]
 position = Vector2(712, 22)
 
-[node name="Coin8" parent="Coins" instance=ExtResource("4_shoo4")]
+[node name="Coin8" parent="Pickups" instance=ExtResource("4_shoo4")]
 position = Vector2(872, 38)
 
-[node name="Coin9" parent="Coins" instance=ExtResource("4_shoo4")]
+[node name="Coin9" parent="Pickups" instance=ExtResource("4_shoo4")]
 position = Vector2(856, -170)
 
-[node name="Coin10" parent="Coins" instance=ExtResource("4_shoo4")]
+[node name="Coin10" parent="Pickups" instance=ExtResource("4_shoo4")]
 position = Vector2(776, -74)
 
-[node name="Coin11" parent="Coins" instance=ExtResource("4_shoo4")]
+[node name="Coin11" parent="Pickups" instance=ExtResource("4_shoo4")]
 position = Vector2(696, -122)
 
-[node name="Coin12" parent="Coins" instance=ExtResource("4_shoo4")]
+[node name="Coin12" parent="Pickups" instance=ExtResource("4_shoo4")]
 position = Vector2(728, -250)
 
-[node name="Coin13" parent="Coins" instance=ExtResource("4_shoo4")]
+[node name="Coin13" parent="Pickups" instance=ExtResource("4_shoo4")]
 position = Vector2(552, -314)
 
-[node name="Coin14" parent="Coins" instance=ExtResource("4_shoo4")]
+[node name="Coin14" parent="Pickups" instance=ExtResource("4_shoo4")]
 position = Vector2(376, -317)
 
-[node name="Coin15" parent="Coins" instance=ExtResource("4_shoo4")]
+[node name="Coin15" parent="Pickups" instance=ExtResource("4_shoo4")]
 position = Vector2(120, -442)
 
-[node name="Coin25" parent="Coins" instance=ExtResource("4_shoo4")]
+[node name="Coin25" parent="Pickups" instance=ExtResource("4_shoo4")]
 position = Vector2(-280, -458)
 
-[node name="Coin27" parent="Coins" instance=ExtResource("4_shoo4")]
+[node name="Coin27" parent="Pickups" instance=ExtResource("4_shoo4")]
 position = Vector2(-264, -473)
 
-[node name="Coin28" parent="Coins" instance=ExtResource("4_shoo4")]
+[node name="Coin28" parent="Pickups" instance=ExtResource("4_shoo4")]
 position = Vector2(-280, -473)
 
-[node name="Coin29" parent="Coins" instance=ExtResource("4_shoo4")]
+[node name="Coin29" parent="Pickups" instance=ExtResource("4_shoo4")]
 position = Vector2(-296, -473)
 
-[node name="Coin30" parent="Coins" instance=ExtResource("4_shoo4")]
+[node name="Coin30" parent="Pickups" instance=ExtResource("4_shoo4")]
 position = Vector2(-280, -488)
 
-[node name="Coin16" parent="Coins" instance=ExtResource("4_shoo4")]
+[node name="Coin16" parent="Pickups" instance=ExtResource("4_shoo4")]
 position = Vector2(497, -618)
 
-[node name="Coin24" parent="Coins" instance=ExtResource("4_shoo4")]
+[node name="Coin24" parent="Pickups" instance=ExtResource("4_shoo4")]
 position = Vector2(488, -570)
 
-[node name="Coin17" parent="Coins" instance=ExtResource("4_shoo4")]
+[node name="Coin17" parent="Pickups" instance=ExtResource("4_shoo4")]
 position = Vector2(616, -603)
 
-[node name="Coin18" parent="Coins" instance=ExtResource("4_shoo4")]
+[node name="Coin18" parent="Pickups" instance=ExtResource("4_shoo4")]
 position = Vector2(808, -650)
 
-[node name="Coin19" parent="Coins" instance=ExtResource("4_shoo4")]
+[node name="Coin19" parent="Pickups" instance=ExtResource("4_shoo4")]
 position = Vector2(936, -778)
 
-[node name="Coin26" parent="Coins" instance=ExtResource("4_shoo4")]
+[node name="Coin26" parent="Pickups" instance=ExtResource("4_shoo4")]
 position = Vector2(984, -730)
 
-[node name="Coin20" parent="Coins" instance=ExtResource("4_shoo4")]
+[node name="Coin20" parent="Pickups" instance=ExtResource("4_shoo4")]
 position = Vector2(808, -826)
 
-[node name="Coin21" parent="Coins" instance=ExtResource("4_shoo4")]
+[node name="Coin21" parent="Pickups" instance=ExtResource("4_shoo4")]
 position = Vector2(792, -826)
 
-[node name="Coin23" parent="Coins" instance=ExtResource("4_shoo4")]
+[node name="Coin23" parent="Pickups" instance=ExtResource("4_shoo4")]
 position = Vector2(567, -846)
 
-[node name="Coin22" parent="Coins" instance=ExtResource("4_shoo4")]
+[node name="Coin22" parent="Pickups" instance=ExtResource("4_shoo4")]
 position = Vector2(776, -826)
 
-[node name="Coin31" parent="Coins" instance=ExtResource("4_shoo4")]
+[node name="Coin31" parent="Pickups" instance=ExtResource("4_shoo4")]
 position = Vector2(600, -858)
 
-[node name="Coin32" parent="Coins" instance=ExtResource("4_shoo4")]
+[node name="Coin32" parent="Pickups" instance=ExtResource("4_shoo4")]
 position = Vector2(392, -1034)
 
-[node name="Coin33" parent="Coins" instance=ExtResource("4_shoo4")]
+[node name="Coin33" parent="Pickups" instance=ExtResource("4_shoo4")]
 position = Vector2(216, -970)
 
-[node name="Coin34" parent="Coins" instance=ExtResource("4_shoo4")]
+[node name="Coin34" parent="Pickups" instance=ExtResource("4_shoo4")]
 position = Vector2(40, -1066)
 
-[node name="Coin35" parent="Coins" instance=ExtResource("4_shoo4")]
+[node name="Coin35" parent="Pickups" instance=ExtResource("4_shoo4")]
 position = Vector2(-168, -1050)
 
-[node name="Coin36" parent="Coins" instance=ExtResource("4_shoo4")]
+[node name="Coin36" parent="Pickups" instance=ExtResource("4_shoo4")]
 position = Vector2(-312, -1192)
 
-[node name="Coin37" parent="Coins" instance=ExtResource("4_shoo4")]
+[node name="Coin37" parent="Pickups" instance=ExtResource("4_shoo4")]
 position = Vector2(-24, -1210)
 
-[node name="Coin38" parent="Coins" instance=ExtResource("4_shoo4")]
+[node name="Coin38" parent="Pickups" instance=ExtResource("4_shoo4")]
 position = Vector2(360, -1226)
 
-[node name="Coin39" parent="Coins" instance=ExtResource("4_shoo4")]
+[node name="Coin39" parent="Pickups" instance=ExtResource("4_shoo4")]
 position = Vector2(408, -1306)
 
-[node name="Coin40" parent="Coins" instance=ExtResource("4_shoo4")]
+[node name="Coin40" parent="Pickups" instance=ExtResource("4_shoo4")]
 position = Vector2(632, -1210)
 
-[node name="Coin41" parent="Coins" instance=ExtResource("4_shoo4")]
+[node name="Coin41" parent="Pickups" instance=ExtResource("4_shoo4")]
 position = Vector2(808, -1210)
 
-[node name="Coin42" parent="Coins" instance=ExtResource("4_shoo4")]
+[node name="Coin42" parent="Pickups" instance=ExtResource("4_shoo4")]
 position = Vector2(920, -1338)
 
-[node name="Coin43" parent="Coins" instance=ExtResource("4_shoo4")]
+[node name="Coin43" parent="Pickups" instance=ExtResource("4_shoo4")]
 position = Vector2(808, -1386)
 
-[node name="Coin44" parent="Coins" instance=ExtResource("4_shoo4")]
+[node name="Coin44" parent="Pickups" instance=ExtResource("4_shoo4")]
 position = Vector2(584, -1418)
 
-[node name="Coin45" parent="Coins" instance=ExtResource("4_shoo4")]
+[node name="Coin45" parent="Pickups" instance=ExtResource("4_shoo4")]
 position = Vector2(488, -1530)
 
-[node name="Coin46" parent="Coins" instance=ExtResource("4_shoo4")]
+[node name="Coin46" parent="Pickups" instance=ExtResource("4_shoo4")]
 position = Vector2(216, -1497)
 
-[node name="Coin47" parent="Coins" instance=ExtResource("4_shoo4")]
+[node name="Coin47" parent="Pickups" instance=ExtResource("4_shoo4")]
 position = Vector2(72, -1597)
 
-[node name="Coin48" parent="Coins" instance=ExtResource("4_shoo4")]
+[node name="Coin48" parent="Pickups" instance=ExtResource("4_shoo4")]
 position = Vector2(44, -1661)
 
-[node name="Coin49" parent="Coins" instance=ExtResource("4_shoo4")]
+[node name="Coin49" parent="Pickups" instance=ExtResource("4_shoo4")]
 position = Vector2(-216, -1770)
 
-[node name="Coin50" parent="Coins" instance=ExtResource("4_shoo4")]
+[node name="Coin50" parent="Pickups" instance=ExtResource("4_shoo4")]
 position = Vector2(-120, -1866)
 
-[node name="Coin51" parent="Coins" instance=ExtResource("4_shoo4")]
+[node name="Coin51" parent="Pickups" instance=ExtResource("4_shoo4")]
 position = Vector2(120, -1850)
 
-[node name="Coin52" parent="Coins" instance=ExtResource("4_shoo4")]
+[node name="Coin52" parent="Pickups" instance=ExtResource("4_shoo4")]
 position = Vector2(344, -1850)
 
-[node name="Coin53" parent="Coins" instance=ExtResource("4_shoo4")]
+[node name="Coin53" parent="Pickups" instance=ExtResource("4_shoo4")]
 position = Vector2(472, -2026)
 
-[node name="Coin54" parent="Coins" instance=ExtResource("4_shoo4")]
+[node name="Coin54" parent="Pickups" instance=ExtResource("4_shoo4")]
 position = Vector2(568, -2087)
 
-[node name="Coin55" parent="Coins" instance=ExtResource("4_shoo4")]
+[node name="Coin55" parent="Pickups" instance=ExtResource("4_shoo4")]
 position = Vector2(609, -1845)
 
-[node name="Coin56" parent="Coins" instance=ExtResource("4_shoo4")]
+[node name="Coin56" parent="Pickups" instance=ExtResource("4_shoo4")]
 position = Vector2(609, -1916)
 
-[node name="Coin57" parent="Coins" instance=ExtResource("4_shoo4")]
+[node name="Coin57" parent="Pickups" instance=ExtResource("4_shoo4")]
 position = Vector2(609, -1991)
 
-[node name="Coin58" parent="Coins" instance=ExtResource("4_shoo4")]
+[node name="Coin58" parent="Pickups" instance=ExtResource("4_shoo4")]
 position = Vector2(904, -1879)
 
-[node name="Coin59" parent="Coins" instance=ExtResource("4_shoo4")]
+[node name="Coin59" parent="Pickups" instance=ExtResource("4_shoo4")]
 position = Vector2(856, -2153)
 
-[node name="Coin60" parent="Coins" instance=ExtResource("4_shoo4")]
-position = Vector2(519, -2258)
+[node name="Coin60" parent="Pickups" instance=ExtResource("4_shoo4")]
+position = Vector2(952, -1800)
 
-[node name="Fruit" parent="Coins" instance=ExtResource("8_sn1l4")]
+[node name="Fruit" parent="Pickups" instance=ExtResource("8_sn1l4")]
 position = Vector2(472, -956)
 
-[node name="Fruit2" parent="Coins" instance=ExtResource("8_sn1l4")]
+[node name="Fruit2" parent="Pickups" instance=ExtResource("8_sn1l4")]
 position = Vector2(-344, 6)
+
+[node name="PinkFruit" parent="Pickups" instance=ExtResource("13_rrg0v")]
+position = Vector2(520, -2260)
 
 [node name="Platforms" type="Node" parent="."]
 
@@ -1032,9 +1036,9 @@ autowrap_mode = 2
 
 [node name="Label4" type="Label" parent="Labels"]
 offset_left = 483.0
-offset_top = -2318.0
-offset_right = 579.0
-offset_bottom = -2301.0
+offset_top = -2331.0
+offset_right = 558.0
+offset_bottom = -2314.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("7_evo7x")
 theme_override_font_sizes/font_size = 8
