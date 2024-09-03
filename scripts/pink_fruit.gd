@@ -5,4 +5,4 @@ extends Area2D
 func _on_body_entered(body: Node2D) -> void:
 	body.can_slide = true
 	animation_player.play("pickup")
-	body.which_sprite = 3
+	body.which_sprite = 2
