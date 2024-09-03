@@ -5,7 +5,7 @@ const SPEED: float = 130.0
 const JUMP_VELOCITY: float = -300.0
 const DOUBLE_JUMP_VELOCITY: float = -400.0
 const DASH_SPEED: float = 500.0
-const WALL_JUMP_DIST: float = 300.0
+const WALL_JUMP_DIST: float = 500.0
 const WALL_SLIDE_FRICTION: float = 50.0
 
 
@@ -19,6 +19,7 @@ var dashing: bool = false
 var can_dash: bool = true
 var which_sprite: int = 0
 var sprite
+var last_direction
 #var sprite_array = [sprite_0, sprite_1, sprite_2]
 
 @onready var sprite_0: AnimatedSprite2D = $Sprite0
@@ -30,6 +31,10 @@ var sprite
 func _physics_process(delta: float) -> void:
 	# Get the input direction -1, 0, 1
 	var direction := Input.get_axis("move_left", "move_right")
+	if direction < 0:
+		last_direction = -1
+	if direction > 0:
+		last_direction = 1
 	
 	# this HAS to be declared in here, if it's declared globally it will not run
 	var sprite_array = [sprite_0, sprite_1, sprite_2]
@@ -91,8 +96,17 @@ func wall_slide(delta):
 		velocity.y += WALL_SLIDE_FRICTION * delta
 		velocity.y = min(velocity.y, WALL_SLIDE_FRICTION)
 		if Input.is_action_just_pressed("jump"):
-			velocity.y = JUMP_VELOCITY
-			jump_sound.play()
+			if last_direction < 0:
+				velocity.y = JUMP_VELOCITY
+				velocity.x = WALL_JUMP_DIST
+				jump_sound.play()
+			elif last_direction > 0:
+				velocity.y = JUMP_VELOCITY
+				velocity.x = -WALL_JUMP_DIST
+				jump_sound.play()
+			else:
+				velocity.y = JUMP_VELOCITY
+				jump_sound.play()
 		
 func flip_sprite(dir):
 	if alive == true:
