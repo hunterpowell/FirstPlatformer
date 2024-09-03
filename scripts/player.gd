@@ -26,7 +26,7 @@ var which_sprite: int = 1
 @onready var hit_sound: AudioStreamPlayer2D = $HitSound
 @onready var jump_sound: AudioStreamPlayer2D = $JumpSound
 
-var sprite_array = [sprite_1, sprite_2, sprite_3]
+#var sprite_array = [sprite_1, sprite_2, sprite_3]
 var sprite: AnimatedSprite2D = sprite_1
 
 
@@ -137,9 +137,18 @@ func dash():
 		$dash_again_timer.start()
 
 func switch_sprite():
-	sprite.hide()
-	sprite = sprite_array[which_sprite]
-	sprite.show()
+	if which_sprite == 1:
+		sprite.hide()
+		sprite = sprite_1
+		sprite.show()
+	elif which_sprite == 2:
+		sprite.hide()
+		sprite = sprite_2
+		sprite.show()
+	elif which_sprite == 3:
+		sprite.hide()
+		sprite = sprite_3
+		sprite.show()
 
 func _on_dash_timer_timeout() -> void:
 	dashing = false
