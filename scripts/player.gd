@@ -59,31 +59,34 @@ func _physics_process(delta: float) -> void:
 	
 func handle_jump():
 	if alive == true:
-		if berries == 1:
+		if berries >= 1:
 			if Input.is_action_just_pressed("jump") and is_on_floor():
 				velocity.y = JUMP_VELOCITY
 				jump_sound.play()
 			if Input.is_action_just_pressed("jump") and not is_on_floor() and is_sliding == false and can_double_jump == true:
 				roll = true
-				velocity.y = JUMP_VELOCITY
+				if berries > 1:
+					velocity.y = DOUBLE_JUMP_VELOCITY
+				else:
+					velocity.y = JUMP_VELOCITY
 				jump_sound.play()
 				can_double_jump = false
 			if is_on_floor():
 				can_double_jump = true
 				roll = false
 			
-		elif berries >= 2:
-			if Input.is_action_just_pressed("jump") and is_on_floor():
-				velocity.y = JUMP_VELOCITY
-				jump_sound.play()
-			if Input.is_action_just_pressed("jump") and not is_on_floor() and is_sliding == false and can_double_jump == true:
-				roll = true
-				velocity.y = DOUBLE_JUMP_VELOCITY
-				jump_sound.play()
-				can_double_jump = false
-			if is_on_floor():
-				can_double_jump = true
-				roll = false
+		#elif berries >= 2:
+			#if Input.is_action_just_pressed("jump") and is_on_floor():
+				#velocity.y = JUMP_VELOCITY
+				#jump_sound.play()
+			#if Input.is_action_just_pressed("jump") and not is_on_floor() and is_sliding == false and can_double_jump == true:
+				#roll = true
+				#velocity.y = DOUBLE_JUMP_VELOCITY
+				#jump_sound.play()
+				#can_double_jump = false
+			#if is_on_floor():
+				#can_double_jump = true
+				#roll = false
 		else:
 			if Input.is_action_just_pressed("jump") and is_on_floor():
 				velocity.y = JUMP_VELOCITY
