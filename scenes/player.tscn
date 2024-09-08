@@ -1123,7 +1123,6 @@ collision_layer = 2
 script = ExtResource("1_jlvvh")
 
 [node name="Sprite0" type="AnimatedSprite2D" parent="."]
-visible = false
 position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_rxyc5")
 animation = &"idle"

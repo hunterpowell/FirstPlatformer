@@ -1,25 +1,25 @@
 [gd_scene load_steps=11 format=3 uid="uid://cheosggyytfxj"]
 
-[ext_resource type="Texture2D" uid="uid://dp4hproxbku5w" path="res://fruit.png" id="1_dgttc"]
 [ext_resource type="Script" path="res://scripts/pink_fruit.gd" id="1_on3xl"]
+[ext_resource type="Texture2D" uid="uid://beg8xfxsm2juy" path="res://assets/sprites/fruit.png" id="2_4n80e"]
 [ext_resource type="AudioStream" uid="uid://dm0xe7wbe4fnq" path="res://assets/sounds/power_up.wav" id="3_2mopa"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_tuhd8"]
-atlas = ExtResource("1_dgttc")
-region = Rect2(48, 32, 16, 16)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_rhkce"]
-atlas = ExtResource("1_dgttc")
+[sub_resource type="AtlasTexture" id="AtlasTexture_s2mdd"]
+atlas = ExtResource("2_4n80e")
 region = Rect2(0, 32, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jks8n"]
+atlas = ExtResource("2_4n80e")
+region = Rect2(48, 32, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_qh35n"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_tuhd8")
+"texture": SubResource("AtlasTexture_s2mdd")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rhkce")
+"texture": SubResource("AtlasTexture_jks8n")
 }],
 "loop": true,
 "name": &"default",
@@ -136,7 +136,7 @@ sprite_frames = SubResource("SpriteFrames_qh35n")
 autoplay = "default"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -1)
+position = Vector2(0, 2)
 shape = SubResource("CircleShape2D_cuidm")
 
 [node name="PowerUpNoise" type="AudioStreamPlayer2D" parent="."]

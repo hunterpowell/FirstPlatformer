@@ -18,34 +18,37 @@ var is_sliding: bool = false
 var dashing: bool = false
 var can_dash: bool = true
 var which_sprite: int = 0
-var sprite
 var last_direction
-#var sprite_array = [sprite_0, sprite_1, sprite_2]
 
 @onready var sprite_0: AnimatedSprite2D = $Sprite0
 @onready var sprite_1: AnimatedSprite2D = $Sprite1
 @onready var sprite_2: AnimatedSprite2D = $Sprite2
 @onready var hit_sound: AudioStreamPlayer2D = $HitSound
 @onready var jump_sound: AudioStreamPlayer2D = $JumpSound
+@onready var sprite_array = [sprite_0, sprite_1, sprite_2]
+@onready var sprite = sprite_0
+
 
 func _physics_process(delta: float) -> void:
 	# Get the input direction -1, 0, 1
 	var direction := Input.get_axis("move_left", "move_right")
+	
+	# last_direction used for wall jump direction
 	if direction < 0:
 		last_direction = -1
 	if direction > 0:
 		last_direction = 1
-	
-	# this HAS to be declared in here, if it's declared globally it will not run
-	var sprite_array = [sprite_0, sprite_1, sprite_2]
-	
+		
 	# apply gravity
-	if not is_on_floor() and not dashing:
+	if not is_on_floor():
 		velocity += get_gravity() * delta
-	if not is_on_floor() and dashing:
-		velocity.y = 0
 
-	switch_sprite(sprite_array)
+	# gravity different when dashing (TODO figure out dash)
+	#if not is_on_floor() and not dashing:
+		#velocity += get_gravity() * delta
+	#if not is_on_floor() and dashing:
+		#velocity.y = 0
+
 	handle_jump()
 	if can_slide:
 		wall_slide(delta)
@@ -149,10 +152,9 @@ func dash():
 		$dash_timer.start()
 		$dash_again_timer.start()
 
-func switch_sprite(array):
-	sprite = array[which_sprite]
-	if which_sprite != 0:
-		array[which_sprite - 1].hide()
+func switch_sprite(array, num):
+	sprite.hide()	
+	sprite = array[num]
 	sprite.show()
 
 func _on_dash_timer_timeout() -> void:

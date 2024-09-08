@@ -5,4 +5,4 @@ extends Area2D
 func _on_body_entered(body: Node2D) -> void:
 	body.berries += 1
 	animation_player.play("pickup")
-	body.which_sprite = 1
+	body.switch_sprite(body.sprite_array, 1)
